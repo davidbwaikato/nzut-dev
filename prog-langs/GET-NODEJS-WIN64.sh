@@ -42,7 +42,12 @@ if [ ! -d $proglang_install_dir ] ; then
 	tar_full_path=`cygpath $tar_full_path`
     fi
     $tar_full_path xvzf $proglang_zipfile
-    
+
+    # Sometimes mv command gets 'permission denied' on Windows
+    # => likely to be file-lock related
+    # => adding small sleep to give OS file-system tie to settle down after unzipping
+    sleep 2
+
     /bin/mv -v $proglang_binary_dist $proglang_install_dir
 else
     echo "Already unpacked '$proglang_binary_dist' as '$proglang_install_dir'"

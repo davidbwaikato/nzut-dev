@@ -1,18 +1,9 @@
 #!/bin/bash
 
 
-jdk_binary_dist=zulu8.90.0.19-ca-fx-jdk8.0.472-win_x64
-jdk_install_dir=jdk-fx8
-
-#jdk_binary_dist=zulu11.84.17-ca-fx-jdk11.0.29-win_x64
-#jdk_install_dir=jdk-fx11
-
-#jdk_binary_dist=zulu17.64.17-ca-fx-jdk17.0.18-win_x64
-##jdk_binary_dist=zulu17.64.17-ca-jdk17.0.18-win_x64
-#jdk_install_dir=jdk-fx17
-
-#jdk_binary_dist=zulu21.48.17-ca-fx-jdk21.0.10-win_x64
-#jdk_install_dir=jdk-fx21
+##jdk_binary_dist=zulu17.64.17-ca-fx-jdk17.0.18-win_x64
+jdk_binary_dist=zulu17.64.17-ca-jdk17.0.18-win_x64
+jdk_install_dir=jdk-v17
 
 jdk_zipfile=$jdk_binary_dist.zip
 
@@ -39,9 +30,15 @@ if [ ! -d $jdk_install_dir ] ; then
 	tar_full_path=`cygpath $tar_full_path`
     fi
     $tar_full_path xvzf $jdk_zipfile
+
     
+    # Sometimes mv command gets 'permission denied' on Windows
+    # => likely to be file-lock related
+    # => adding small sleep to give OS file-system tie to settle down after unzipping
+    sleep 2
+
     /bin/mv -v $jdk_binary_dist $jdk_install_dir
 else
-    echo "Already unpacked zulu-based JDK to $install_dir"
+    echo "Already unpacked zulu-based JDK to $jdk_install_dir"
 fi
 
