@@ -61,3 +61,36 @@ else
     echo "====" >&2
 fi
 
+
+#
+# If compiling for Android then you need the Android SDK
+#
+
+# For me, Android SDK installed to my user's AppData/Local area
+# A system installed Android SDK will likely be somewhere in the "Program Files" area
+
+ANDROID_INSTALL_DIR="$HOME/AppData/Local"
+
+
+if [ -d "$PROGRAM_FILES/Android/Sdk" ] ; then
+
+    echo ""
+    echo "----"
+    echo "Detected presence of an Android SDK installation"
+    echo "=> Setting up Environment Variables"
+    echo "----"
+    
+    export ANDROID_HOME="$PROGRAM_FILES/Android/Sdk"
+    echo "Set ANDROID_HOME: $ANDROID_HOME"
+
+    export PATH=$ANDROID_HOME/emulator:$PATH
+    export PATH=$ANDROID_HOME/platform-tools:$PATH
+    export PATH=$ANDROID_HOME/tools:$PATH
+    export PATH=$ANDROID_HOME/tools/bin:$PATH
+    echo "And added 'emulator', 'platform-tools', 'tools' and 'tools/bin' to PATH"
+    echo "----"
+    echo ""    
+fi
+
+
+
