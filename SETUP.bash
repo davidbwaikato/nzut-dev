@@ -17,7 +17,7 @@ fi
 if [ -d cli-tools/HandBrake ] ; then
 
     cd cli-tools/HandBrake \
-	&& export PATH="$PWD/HandBrake/:$PATH" \
+	&& export PATH="$PWD:$PATH" \
 	&& cd ../..
     echo "  Added HandBrake to PATH"
 else
