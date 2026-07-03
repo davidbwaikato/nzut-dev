@@ -51,7 +51,8 @@ fi
 if [ -d prog-langs/jdk-v17 ] ; then
 
     cd prog-langs/jdk-v17  \
-	&& export PATH="$PWD/jdk-v17/bin:$PATH" \
+	&& export JAVA_HOME="$PWD" \
+	&& export PATH="$PWD/bin:$PATH" \
 	&& cd ../..
     echo "  Added JDK (v17) to PATH"
 else
