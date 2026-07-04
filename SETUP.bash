@@ -72,7 +72,7 @@ fi
 ANDROID_INSTALL_DIR="$HOME/AppData/Local"
 
 
-if [ -d "$PROGRAM_FILES/Android/Sdk" ] ; then
+if [ -d "$ANDROID_INSTALL_DIR/Android/Sdk" ] ; then
 
     echo ""
     echo "----"
@@ -80,7 +80,7 @@ if [ -d "$PROGRAM_FILES/Android/Sdk" ] ; then
     echo "=> Setting up Environment Variables"
     echo "----"
     
-    export ANDROID_HOME="$PROGRAM_FILES/Android/Sdk"
+    export ANDROID_HOME="$ANDROID_INSTALL_DIR/Android/Sdk"
     echo "Set ANDROID_HOME: $ANDROID_HOME"
 
     export PATH=$ANDROID_HOME/emulator:$PATH
@@ -89,8 +89,10 @@ if [ -d "$PROGRAM_FILES/Android/Sdk" ] ; then
     export PATH=$ANDROID_HOME/tools/bin:$PATH
     echo "And added 'emulator', 'platform-tools', 'tools' and 'tools/bin' to PATH"
     echo "----"
-    echo ""    
+else
+    echo "----"
+    echo "Did not detect Android SDK installation.  Unable to build Android releases of app"
+    echo "----"
 fi
 
-
-
+echo ""

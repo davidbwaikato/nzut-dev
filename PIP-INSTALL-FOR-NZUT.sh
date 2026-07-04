@@ -25,6 +25,9 @@ pip install python-dotenv
 echo "Installing youtube downloader package: 'yt-dlp'"
 pip install yt-dlp yt-dlp-ejs
 
+echo "Installing 'pillow' for image resizing"
+pip install pillow
+
 echo "Installing playwright for browser automation: 'playwright'"
 pip install playwright
 echo "Installing chromium for use with playwright"
