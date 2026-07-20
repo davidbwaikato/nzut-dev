@@ -39,7 +39,7 @@ echo "++++"
 if [ -d prog-langs/node-v24 ] ; then
 
     cd prog-langs/node-v24  \
-	&& export PATH="$PWD/node-v24/:$PATH" \
+	&& export PATH="$PWD:$PATH" \
 	&& cd ../.. 
     echo "  Added NodeJS (v24) to PATH"
 else
