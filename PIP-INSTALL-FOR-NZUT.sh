@@ -28,6 +28,9 @@ pip install yt-dlp yt-dlp-ejs
 echo "Installing 'pillow' for image resizing"
 pip install pillow
 
+echo "Installing 'pypdfium2' for PDF to Image conversion"
+pip install pypdfium2
+
 echo "Installing playwright for browser automation: 'playwright'"
 pip install playwright
 echo "Installing chromium for use with playwright"
